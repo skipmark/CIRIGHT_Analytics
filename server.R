@@ -3037,12 +3037,12 @@ function(input, output, session) {
 
     print(plot)
   })
-  
+ ###### Summary scores 
   output$summary_scores <- renderPlot({
     temp1 <- subset(hrdata, 
                     hrdata$country == input$country_summary & hrdata$year %in% seq(input$countryyearslider_summary[1], 
                                                                                    input$countryyearslider_summary[2], 1))
-    ## The Right to a Fair Trial (law)
+    ## Physical Integrity Index
     
     if(input$summary_rights=="physint_sum"){
       #removing missing values
@@ -3066,7 +3066,7 @@ function(input, output, session) {
         theme(axis.title.y = element_text(size=14,face="bold"),axis.title.x = element_text(size=14,face="bold"),axis.text.x = element_text(size=14),axis.text.y = element_text( angle=90, vjust=1, hjust=.5,size=14 ))+
         ggtitle(paste("Physical Integrity Summary Score", "\n", "(", paste(input$country_summary, ":", sep=""), input$countryyearslider_summary[1], "-",  input$countryyearslider_summary[2], ")")) }
     
-    
+    ## Repression Index
     if(input$summary_rights=="repression_sum"){
       #removing missing values
       temp1 <- temp1[!is.na(temp1$repression_sum),]
@@ -3088,7 +3088,8 @@ function(input, output, session) {
         ylab("Score")+
         theme(axis.title.y = element_text(size=14,face="bold"),axis.title.x = element_text(size=14,face="bold"),axis.text.x = element_text(size=14),axis.text.y = element_text( angle=90, vjust=1, hjust=.5,size=14 ))+
         ggtitle(paste("Repression Index", "\n", "(", paste(input$country_summary, ":", sep=""), input$countryyearslider_summary[1], "-",  input$countryyearslider_summary[2], ")")) }
-    
+
+    ## Civil and Political Rights Index
     if(input$summary_rights=="civpol_sum"){
       #removing missing values
       temp1 <- temp1[!is.na(temp1$civpol_sum),]
@@ -3110,7 +3111,8 @@ function(input, output, session) {
         ylab("Score")+
         theme(axis.title.y = element_text(size=14,face="bold"),axis.title.x = element_text(size=14,face="bold"),axis.text.x = element_text(size=14),axis.text.y = element_text( angle=90, vjust=1, hjust=.5,size=14 ))+
         ggtitle(paste("Civil and Political Rights Index", "\n", "(", paste(input$country_summary, ":", sep=""), input$countryyearslider_summary[1], "-",  input$countryyearslider_summary[2], ")")) }
-    
+
+    ## Workers rights Laws Index
     if(input$summary_rights=="workerrights_laws_sum"){
       #removing missing values
       temp1 <- temp1[!is.na(temp1$workerrights_laws_sum),]
@@ -3132,7 +3134,8 @@ function(input, output, session) {
         ylab("Score")+
         theme(axis.title.y = element_text(size=14,face="bold"),axis.title.x = element_text(size=14,face="bold"),axis.text.x = element_text(size=14),axis.text.y = element_text( angle=90, vjust=1, hjust=.5,size=14 ))+
         ggtitle(paste("Worker Rights Laws", "\n", "(", paste(input$country_summary, ":", sep=""), input$countryyearslider_summary[1], "-",  input$countryyearslider_summary[2], ")")) }
-    
+
+    ## Workers' rights practices index
     if(input$summary_rights=="workerrights_practices_sum"){
       #removing missing values
       temp1 <- temp1[!is.na(temp1$workerrights_practices_sum),]
